@@ -20,7 +20,7 @@ public record Player(string Name)
 
     private int CalculateTotal(HashSet<Card> cards)
     {
-        return cards.Select(x => x.Value).Sum();
+        return cards.Select(x => (int)x.Value).Sum();
     }
 
     private string GetListOfCards(HashSet<Card> cards)

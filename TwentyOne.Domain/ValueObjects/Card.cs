@@ -1,3 +1,5 @@
-﻿namespace TwentyOne.Domain.ValueObjects;
+﻿using TwentyOne.Domain.Enums;
 
-public record Card(int Value);
+namespace TwentyOne.Domain.ValueObjects;
+
+public record Card(CardValue Value);

@@ -1,15 +1,13 @@
 ﻿using TwentyOne.Game;
 
-Console.WriteLine("Game starting...");
-
+Console.WriteLine("Application starting...");
 try
 {
     var game = new Game();
     game.Run();
-    
     Console.WriteLine("For Exit press any key");
 }
 catch (Exception e)
 {
-    Console.WriteLine($"Game crushed. {e.Message}");
+    Console.WriteLine($"Application crushed. {e.Message}");
 }
