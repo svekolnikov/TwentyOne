@@ -44,17 +44,11 @@ public class PlayersService
     {
         Console.WriteLine($"Current Player: {Players[_queue].Name}");
     }
-    public void GiveCardToCurrentPlayer(Card card)
+    public Player GiveCardToCurrentPlayer(Card card)
     {
-        var total = Players[_queue].GrabCard(card);
-        if (total > 21) //lose
-        {
-            
-        }
-        else //win , game stopped
-        {
-            
-        }
+        var player = Players[_queue];
+        var total = player.GrabCard(card);
+        return player;
     }
     
     

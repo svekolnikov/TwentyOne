@@ -38,14 +38,23 @@ public class GameService
 
     private void Playing()
     {
+        var run = true;
         Console.WriteLine("######################## Playing #############################");
-        while (true)
+        while (run)
         {
             _playersService.PrintCurrentPlayerName();
             var isPlayerGoingTookCard = SuggestTakeOrSkip();
             if (isPlayerGoingTookCard)
             {
-                _playersService.GiveCardToCurrentPlayer(_cardDeckService.GetBottomOne());
+               var player = _playersService.GiveCardToCurrentPlayer(_cardDeckService.GetBottomOne());
+               if (player.TotalValues == 21)
+               {
+                   run = false;
+               }
+               else if (player.TotalValues > 21)
+               {
+                   
+               }
             }
             else
             {
@@ -55,6 +64,7 @@ public class GameService
             _playersService.PrintInfo(); 
             _playersService.ShiftQueue();
         }
+        Console.WriteLine($"Game finished");
     }
 
     private bool SuggestTakeOrSkip()
