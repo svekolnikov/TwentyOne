@@ -7,6 +7,10 @@ public class CardDeckService
 {
     private readonly Data _data;
     private readonly Random _random;
+    
+    public LinkedList<Card> Cards { get; private set; }
+    public Card? CardOnTheCardDeck { get; private set; }
+    
     public CardDeckService()
     {
         _random = new Random();
@@ -14,14 +18,32 @@ public class CardDeckService
         _data.Init();
     }
     
-    public Stack<Card> Cards { get; set; }
     public void Init()
     {
+        Console.WriteLine("Init card deck...");
         var cards = _data.Cards;
         Shuffle(cards);
+        Cards = new LinkedList<Card>(cards);
     }
 
-    public Card GetOne() => Cards.Pop();
+    public Card GetTopOne()
+    {
+        var card = Cards.Last!.Value;
+        Cards.RemoveLast();
+        return card;
+    }
+    public Card GetBottomOne()
+    {
+        var card = Cards.First!.Value;
+        Cards.RemoveFirst();
+        return card;
+    }
+
+    public void LayCardOnTheCardDeck(Card card)
+    {
+        CardOnTheCardDeck = card;
+        Console.WriteLine($"Card on the card deck: {CardOnTheCardDeck}");
+    }
     
     private void Shuffle(IList<Card> cards)
     {

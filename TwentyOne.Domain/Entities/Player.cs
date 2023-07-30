@@ -5,30 +5,30 @@ namespace TwentyOne.Domain.Entities;
 
 public record Player(string Name)
 {
-    public HashSet<Card> Cards { get; private set; }
-    public int Total { get; private set; }
+    public HashSet<Card> Cards { get; private set; } = new();
+    public int TotalValues { get; private set; }
 
-    public void AddCard(Card card)
+    public void GrabCard(Card card)
     {
         Cards.Add(card);
         Cards = Cards
             .OrderBy(x => x.Value)
             .ToHashSet();
         
-        Total = CalculateTotal(Cards);
+        TotalValues = CalculateTotalValues(Cards);
     }
 
-    private int CalculateTotal(HashSet<Card> cards)
+    private int CalculateTotalValues(HashSet<Card> cards)
     {
         return cards.Select(x => (int)x.Value).Sum();
     }
 
-    private string GetListOfCards(HashSet<Card> cards)
+    private string GetListOfCardNames(HashSet<Card> cards)
     {
         var sb = new StringBuilder();
         foreach (var card in cards)
         {
-            sb.Append($"{card.Value} \n");
+            sb.Append($"{card.Suit.Name} {card.Value} {(int)card.Value}\n");
         }
         return sb.ToString();
     }
@@ -36,6 +36,6 @@ public record Player(string Name)
     public override string ToString()
     {
         return $"Player ${Name}, cards:\n" +
-               $"{GetListOfCards(Cards)}";
+               $"{GetListOfCardNames(Cards)}";
     }
 }
