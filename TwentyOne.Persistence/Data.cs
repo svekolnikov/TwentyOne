@@ -9,10 +9,10 @@ public class Data
 
     public void Init()
     {
-        var spades = "♠️";
-        var clubs = "♣️";
-        var hearts = "♥️";
-        var diamonds = "♦️";
+        const string spades = "♠️";
+        const string clubs = "♣️";
+        const string hearts = "♥️";
+        const string diamonds = "♦️";
         
         foreach (var value in CardValues.Data)
         {
