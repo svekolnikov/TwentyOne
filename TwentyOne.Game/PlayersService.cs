@@ -18,7 +18,7 @@ public class PlayersService
         }
         return sb.ToString();
     }
-    public void InitPlayers()
+    public void Init()
     {
         Console.WriteLine("Enter players names: \n");
         while (Players.Count() < MaxPlayers)
@@ -26,6 +26,7 @@ public class PlayersService
             var name = Console.ReadLine();
             if (string.IsNullOrWhiteSpace(name))
             {
+                Console.WriteLine("Not valid name, try again");
                 continue;
             }
             

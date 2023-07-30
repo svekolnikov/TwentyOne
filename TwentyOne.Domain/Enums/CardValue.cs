@@ -16,3 +16,23 @@ public enum CardValue
     King = 4,
     Ace = 1,
 }
+
+public static class CardValues
+{
+    public static readonly CardValue[] Data = new[]
+    {
+        CardValue.Two,
+        CardValue.Three,
+        CardValue.Four,
+        CardValue.Five,
+        CardValue.Six,
+        CardValue.Seven,
+        CardValue.Eight,
+        CardValue.Nine,
+        CardValue.Ten,
+        CardValue.Jack,
+        CardValue.Queen,
+        CardValue.King,
+        CardValue.Ace
+    };
+}

@@ -3,7 +3,7 @@
 Console.WriteLine("Application starting...");
 try
 {
-    var game = new Game();
+    var game = new GameService();
     game.Run();
     Console.WriteLine("For Exit press any key");
 }

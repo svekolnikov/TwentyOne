@@ -4,11 +4,11 @@
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <RootNamespace>TwentyOne.Persistence</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\TwentyOne.Domain\TwentyOne.Domain.csproj" />
-      <ProjectReference Include="..\TwentyOne.Persistence\TwentyOne.Persistence.csproj" />
     </ItemGroup>
 
 </Project>
