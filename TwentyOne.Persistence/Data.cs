@@ -5,16 +5,21 @@ namespace TwentyOne.Persistence;
 
 public class Data
 {
-    public HashSet<Card> Cards { get; private set; } = new ();
+    public List<Card> Cards { get; } = new ();
 
     public void Init()
     {
-        for (int i = 0; i < 4; i++) // 4 suits
+        var spades = "♠️";
+        var clubs = "♣️";
+        var hearts = "♥️";
+        var diamonds = "♦️";
+        
+        foreach (var value in CardValues.Data)
         {
-            for (int j = 0; j <= CardValues.Data.Length; j++)
-            {
-                Cards.Add(new Card((Suits)i, CardValues.Data[j]));
-            }
+            Cards.Add(new Card(new Suit(spades, Suits.Spades), value));
+            Cards.Add(new Card(new Suit(clubs, Suits.Clubs), value));
+            Cards.Add(new Card(new Suit(hearts, Suits.Hearts), value));
+            Cards.Add(new Card(new Suit(diamonds, Suits.Diamonds), value));
         }
     }
 }

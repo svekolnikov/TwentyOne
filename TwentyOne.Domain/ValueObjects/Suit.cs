@@ -2,4 +2,4 @@
 
 namespace TwentyOne.Domain.ValueObjects;
 
-public record Card(Suit Suit, CardValue Value);
+public record Suit(string Name, Suits Value);
