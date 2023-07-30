@@ -1,5 +1,4 @@
-﻿using System.Text;
-using TwentyOne.Domain.ValueObjects;
+﻿using TwentyOne.Domain.ValueObjects;
 
 namespace TwentyOne.Domain.Entities;
 
@@ -25,17 +24,13 @@ public record Player(string Name)
 
     private string GetListOfCardNames(HashSet<Card> cards)
     {
-        var sb = new StringBuilder();
-        foreach (var card in cards)
-        {
-            sb.Append($"{card.Suit.Name} {card.Value} {(int)card.Value}\n");
-        }
-        return sb.ToString();
+        return string.Join("\n", cards);
     }
 
     public override string ToString()
     {
-        return $"Player ${Name}, cards:\n" +
-               $"{GetListOfCardNames(Cards)}";
+        return $"Player {Name} cards:\n" +
+               $"{GetListOfCardNames(Cards)}\n" +
+               $"Total: {TotalValues}\n";
     }
 }

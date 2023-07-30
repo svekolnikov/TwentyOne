@@ -30,8 +30,8 @@ public class PlayersService
     public void ShiftQueue()
     {
         _queue = _queue == PlayersCount() - 1
-            ? _queue = 0
-            : _queue++;
+            ? 0
+            : ++_queue;
     }
 
     public string PrintPlayers()
@@ -51,7 +51,6 @@ public class PlayersService
             Console.WriteLine(player);
         }
     }
-
     public void GiveCardToCurrentPlayer(Card card)
     {
         Players[_queue].GrabCard(card);

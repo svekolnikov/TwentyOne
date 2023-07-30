@@ -1,6 +1,4 @@
-﻿using System.Text.RegularExpressions;
-
-namespace TwentyOne.Game;
+﻿namespace TwentyOne.Game;
 
 public class GameService
 {
@@ -22,15 +20,16 @@ public class GameService
 
     private void DistributionCardsToPlayers()
     {
-        Console.WriteLine("Distributing of one card to the players from the top of the deck...");
+        Console.WriteLine("Distributing...");
         for (var i = 0; i < _playersService.PlayersCount(); i++)
         {
             _playersService.GiveCardToCurrentPlayer(_cardDeckService.GetTopOne());
+            _playersService.ShiftQueue();
         }
 
         _playersService.PrintInfo();
 
-        Console.WriteLine("Place the bottom card of the deck on top of the deck, face up....");
+        Console.WriteLine("Place the bottom card on top of the deck, face up....");
         var bottomCard = _cardDeckService.GetBottomOne();
         _cardDeckService.LayCardOnTheCardDeck(bottomCard);
     }

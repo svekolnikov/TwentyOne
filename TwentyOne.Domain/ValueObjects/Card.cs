@@ -8,6 +8,6 @@ public record Card(
 {
     public override string ToString()
     {
-        return $"{Suit.Name} {Suit.Value} {(int)Suit.Value}";
+        return $"{Suit} {Value} {(int)Value}";
     }
 }
