@@ -7,7 +7,7 @@ public record Player(string Name)
     public HashSet<Card> Cards { get; private set; } = new();
     public int TotalValues { get; private set; }
 
-    public void GrabCard(Card card)
+    public int GrabCard(Card card)
     {
         Cards.Add(card);
         Cards = Cards
@@ -15,6 +15,7 @@ public record Player(string Name)
             .ToHashSet();
         
         TotalValues = CalculateTotalValues(Cards);
+        return TotalValues;
     }
 
     private int CalculateTotalValues(HashSet<Card> cards)
@@ -24,12 +25,12 @@ public record Player(string Name)
 
     private string GetListOfCardNames(HashSet<Card> cards)
     {
-        return string.Join("\n", cards);
+        return string.Join(" ", cards);
     }
 
     public override string ToString()
     {
-        return $"Player {Name} cards:\n" +
+        return $"Player {Name}: " +
                $"{GetListOfCardNames(Cards)}\n" +
                $"Total: {TotalValues}\n";
     }

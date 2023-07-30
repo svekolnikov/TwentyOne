@@ -8,6 +8,6 @@ public record Card(
 {
     public override string ToString()
     {
-        return $"{Suit} {Value} {(int)Value}";
+        return $"{Suit.Emoji}{Value}";
     }
 }

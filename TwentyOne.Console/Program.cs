@@ -1,6 +1,5 @@
 ﻿using TwentyOne.Game;
 
-Console.WriteLine("Application starting...");
 try
 {
     var game = new GameService();

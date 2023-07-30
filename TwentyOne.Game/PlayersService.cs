@@ -1,5 +1,4 @@
-﻿using System.Text;
-using TwentyOne.Domain.Entities;
+﻿using TwentyOne.Domain.Entities;
 using TwentyOne.Domain.ValueObjects;
 
 namespace TwentyOne.Game;
@@ -11,10 +10,10 @@ public class PlayersService
     public List<Player> Players { get; private set; } = new();
     
     public int PlayersCount() => Players.Count;
+    public string PlayerName() => Players[_queue].Name;
     
     public void Init()
     {
-        Console.WriteLine("Init players...");
         Console.WriteLine("Enter players names:");
         while (Players.Count() < MaxPlayers)
         {
@@ -33,16 +32,6 @@ public class PlayersService
             ? 0
             : ++_queue;
     }
-
-    public string PrintPlayers()
-    {
-        var sb = new StringBuilder();
-        foreach (var player in Players)
-        {
-            sb.Append($"{player.Name} \n");
-        }
-        return sb.ToString();
-    }
     public void PrintInfo()
     {
         Console.WriteLine("Cards on the player hands:");
@@ -51,10 +40,23 @@ public class PlayersService
             Console.WriteLine(player);
         }
     }
+    public void PrintCurrentPlayerName()
+    {
+        Console.WriteLine($"Current Player: {Players[_queue].Name}");
+    }
     public void GiveCardToCurrentPlayer(Card card)
     {
-        Players[_queue].GrabCard(card);
+        var total = Players[_queue].GrabCard(card);
+        if (total > 21) //lose
+        {
+            
+        }
+        else //win , game stopped
+        {
+            
+        }
     }
+    
     
     private void AddPlayer(string name)
     {

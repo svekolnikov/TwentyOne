@@ -20,7 +20,6 @@ public class CardDeckService
     
     public void Init()
     {
-        Console.WriteLine("Init card deck...");
         var cards = _data.Cards;
         Shuffle(cards);
         Cards = new LinkedList<Card>(cards);
@@ -42,7 +41,7 @@ public class CardDeckService
     public void LayCardOnTheCardDeck(Card card)
     {
         CardOnTheCardDeck = card;
-        Console.WriteLine($"Card on the card deck: {CardOnTheCardDeck}");
+        Console.WriteLine($"Card on the card deck: {CardOnTheCardDeck}\n");
     }
     
     private void Shuffle(IList<Card> cards)
